@@ -1,0 +1,124 @@
+﻿<Window x:Class="Ato_Assist_System.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ato_Assist_System"
+        mc:Ignorable="d"
+        Title="Ato - Assist" Height="100" Width="280"
+        WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="Rectangle" x:Key="CloseBtn">
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0 0 5 0"/>
+            <Setter Property="Fill" Value="PaleVioletRed"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Fill" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="BtnTxt">
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="AppLogo">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Opacity" Value="0"/>
+        </Style>
+
+        <Style TargetType="Border" x:Key="BigBtn">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="BtnImg">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+    </Window.Resources>
+    <Border CornerRadius="10" 
+            MouseMove="DragWindows">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" >
+                <Grid>
+                    <Image Source="assets/icons/Send Request.png" HorizontalAlignment="Left"/>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" 
+                           Name="version" Foreground="White" 
+                           Text="Ato Assist" Margin="20 0 0 0"/>
+                </Grid>
+            </Border>
+
+            <Rectangle  Style="{StaticResource CloseBtn}" MouseUp="CloseWindow" />
+
+            <Grid Grid.Row="1" x:Name="AppContent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".3*"/>
+                    <ColumnDefinition Width=".3*"/>
+                    <ColumnDefinition Width=".3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{StaticResource BigBtn}" 
+                        MouseLeftButtonUp="RegisterSystem">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height=".3*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="assets/Icons/Register.png" Name="RegisterImg" Width="30"/>
+                        <TextBlock Text="Register System" Style="{StaticResource BtnTxt}"  
+                                   Grid.Row="1" Name="RegisterBtn"/>
+                    </Grid>
+
+                </Border>
+
+                <Border Style="{StaticResource BigBtn}" 
+                        Grid.Column="1" MouseLeftButtonUp="OpenQrCode">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height=".3*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="assets/Icons/qr.png" Width="30"/>
+                        <TextBlock Text="System QR Code" Style="{StaticResource BtnTxt}" Grid.Row="1"/>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource BigBtn}" Grid.Column="2"
+                        MouseLeftButtonUp="CloseWindow">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height=".3*"/>
+                        </Grid.RowDefinitions>
+                            <Image Source="assets/Icons/xmark-solid.png" Width="30"/>
+                        <TextBlock Text="Exit Ato Assist" Style="{StaticResource BtnTxt}" Grid.Row="1"/>
+                    </Grid>
+                </Border>
+            </Grid>
+            
+        </Grid>
+    </Border>
+
+    
+</Window>
